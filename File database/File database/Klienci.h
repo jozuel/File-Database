@@ -4,6 +4,7 @@ class Klienci
 {
 public:
 	Klienci();
+	Klienci(std::string *tab);
 	~Klienci();
 
 private:

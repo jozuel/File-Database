@@ -4,6 +4,7 @@ class Rezerwacje
 {
 public:
 	Rezerwacje();
+	Rezerwacje(std::string * tab);
 	~Rezerwacje();
 private:
 	int rezerwacjaID;

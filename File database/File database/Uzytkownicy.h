@@ -4,6 +4,7 @@ class Uzytkownicy
 {
 public:
 	Uzytkownicy();
+	Uzytkownicy(std::string * tab);
 	~Uzytkownicy();
 private:
 	int uzytkownikID;

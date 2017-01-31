@@ -5,29 +5,31 @@
 #include "Pokoje.h"
 #include "Rezerwacje.h"
 #include "Uzytkownicy.h"
+#include <vector>
+using namespace std;
 class BazaDanych
 {
 public:
+	void pobranieWartoscizTabel(fstream &klienci, fstream &pokoje, fstream &rezerwacje, fstream &uzytkownicy);
 	void otwarcieBazy();
+	void otwarcieConfig();
 	BazaDanych();
 	~BazaDanych();
-
-	std::string** select(std::string bazaDanych);
-	void insert(std::string bazaDanych, std::string dane[]);
-	void modyfy(std::string bazaDanych, int ID, std::string dane[]);
-	int remove(std::string bazaDanych, int ID);
+	string** select(string bazaDanych);
+	void insert(string bazaDanych, string dane[]);
+	void modyfy(string bazaDanych, int ID, string dane[]);
+	int remove(string bazaDanych, int ID);
 private:			//sciezka do po³¹czenia z plikami
-	std::string nazwaTabeliLogow;
-	std::string nazwaTabeliKlientow;
-	std::string nazwaTabeliPokoi;
-	std::string nazwaTabeliRezerwacji;
-	std::string nazwaTabeliUzytkownikow;
+	string nazwaTabeliLogow;
+	string nazwaTabeliKlientow;
+	string nazwaTabeliPokoi;
+	string nazwaTabeliRezerwacji;
+	string nazwaTabeliUzytkownikow;
 
-	BazaLogow* tabelaLogow;
-	Klienci* tabelaKlientow;
-	Pokoje* tabelaPokojow;
-	Rezerwacje* tabelaRezerwacji;
-	Uzytkownicy* tabelaUzytkownikow;
-
+	vector <BazaLogow*> tabelaLogow;
+	vector <Klienci*> tabelaKlientow;
+	vector <Pokoje*> tabelaPokojow;
+	vector <Rezerwacje*> tabelaRezerwacji;
+	vector <Uzytkownicy*> tabelaUzytkownikow;
 };
 
