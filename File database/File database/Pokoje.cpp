@@ -8,11 +8,31 @@ Pokoje::Pokoje()
 }
 Pokoje::Pokoje(std::string* tab)
 {
-	pokujID = stod(tab[0]);
-	iloscMiejsc = stod(tab[1]);
-	nrPokoju = stod(tab[2]);
+	pokojID = atoi(tab[0].c_str());
+	iloscMiejsc = atoi(tab[1].c_str());
+	nrPokoju = tab[2];
 }
-
+int Pokoje::getPokojID()
+{
+	return pokojID;
+}
+int Pokoje::getIloscMiejsc()
+{
+	return iloscMiejsc;
+}
+std::string Pokoje::getNrPokoju()
+{
+	return nrPokoju;
+}
+bool Pokoje::operator<(Pokoje& l)
+{
+	return(pokojID < l.getPokojID());
+}
+std::ostream& operator <<(std::ostream& stream, Pokoje* baza)
+{
+	stream << baza->getPokojID() << " " << baza->getIloscMiejsc() << " " << baza->getNrPokoju();
+	return stream;
+}
 Pokoje::~Pokoje()
 {
 }

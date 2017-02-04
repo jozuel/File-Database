@@ -6,19 +6,28 @@
 #include "Rezerwacje.h"
 #include "Uzytkownicy.h"
 #include <vector>
+#include <algorithm>
 using namespace std;
 class BazaDanych
 {
 public:
-	void pobranieWartoscizTabel(fstream &klienci, fstream &pokoje, fstream &rezerwacje, fstream &uzytkownicy);
+	void zapiszDane();
+	void pobranieWartoscizTabel(ifstream &klienci, ifstream &pokoje, ifstream &rezerwacje, ifstream &uzytkownicy, ifstream &logi);
 	void otwarcieBazy();
 	void otwarcieConfig();
 	BazaDanych();
 	~BazaDanych();
-	string** select(string bazaDanych);
-	void insert(string bazaDanych, string dane[]);
+	string** rozszezenieTablicy(string** tab,int wielkoscX, int wielkoscY);
+	//zwraca ilosc danych i zapisuje dane w zmiennej dane
+	int select(string bazaDanych, string** &dane);
+	string* select(string BazaDanych, int id);
+	int szukajID(string bazaDanych);
 	void modyfy(string bazaDanych, int ID, string dane[]);
 	int remove(string bazaDanych, int ID);
+	//przyjmuje tablice danych o rozmiaze wyszyskich pol tablicy(lacznie z id) ID nie musi byc podawane
+	void insert(string bazaDanych, string dane[]);
+	void sortTable(string bazaDanych);
+
 private:			//sciezka do po³¹czenia z plikami
 	string nazwaTabeliLogow;
 	string nazwaTabeliKlientow;
